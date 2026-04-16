@@ -16,12 +16,18 @@ create_tables()
 
 
 # --- CORRECTED CORS CONFIGURATION ---
+# Support both local development and production
 origins = [
     "http://localhost",
     "http://localhost:3000", # Default for Create React App
     "http://localhost:3001", # Common alternative
     "http://localhost:5173", 
 ]
+
+# Add production frontend URL if specified
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    origins.append(frontend_url)
 
 app.add_middleware(
     CORSMiddleware,
