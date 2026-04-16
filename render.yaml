@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: free
     rootDir: backend
-    buildCommand: pip install --only-binary :all: -r requirements.txt || pip install -r requirements.txt
+    buildCommand: pip install --only-binary=all --no-cache-dir -r requirements.txt
     startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
       - key: FRONTEND_URL
         fromService:
