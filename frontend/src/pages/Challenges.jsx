@@ -8,7 +8,6 @@ export default function ChallengePage() {
   const [code, setCode] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [toast, setToast] = useState({ show: false, type: "success", message: "" });
   const [challenge, setChallenge] = useState(null);
   const [user, setUser] = useState(null);
@@ -102,7 +101,7 @@ export default function ChallengePage() {
         setUser(currentUser);
         setChallenge(challengeData);
       } catch (err) {
-        setError(err.message || "Failed to load challenge.");
+        showToast("error", err.message || "Failed to load challenge.");
       }
     };
 
@@ -112,7 +111,6 @@ export default function ChallengePage() {
   const handleSubmit = async () => {
     if (!code.trim()) {
       showToast("error", "Please enter some code.");
-      setError("Please enter some code");
       return;
     }
 
@@ -126,7 +124,6 @@ export default function ChallengePage() {
       return;
     }
 
-    setError("");
     setLoading(true);
     setResult(null);
 
@@ -142,7 +139,6 @@ setLeaderboard(updatedLeaderboard);
      showToast("success", "Submission sent successfully.");
     } catch (err) {
       showToast("error", err.message || "Failed to submit code");
-      setError(err.message || "Failed to submit code");
     } finally {
       setLoading(false);
     }
@@ -151,7 +147,6 @@ setLeaderboard(updatedLeaderboard);
   const handleReset = () => {
     setCode("");
     setResult(null);
-    setError("");
   };
 
   return (
