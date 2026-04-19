@@ -27,7 +27,7 @@ export default function Register() {
     if (!username.trim()) {
       setUsernameError("Username is required");
       isValid = false;
-    } else if (username.length < 3) {
+    } else if (username.trim().length < 3) {
       setUsernameError("Username must be at least 3 characters");
       isValid = false;
     }
@@ -79,27 +79,39 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-      <div className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-2xl p-8">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-2">
-              Dojo
-            </h1>
-            <p className="text-gray-600 text-sm">Create your account to start coding</p>
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.22),_transparent_32%),linear-gradient(135deg,#111827_0%,#172554_45%,#0f766e_100%)] px-4 py-10">
+      <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
+        <section className="rounded-[2rem] border border-white/10 bg-white/10 p-8 text-white shadow-2xl backdrop-blur md:p-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.28em] text-amber-300">Why DevDojo</p>
+          <h1 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
+            Build a coding practice environment that feels closer to real placements.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200">
+            DevDojo is a collaborative interview-prep workspace where students solve challenges together, monitor consistency, and present measurable growth.
+          </p>
+
+          <div className="mt-8 space-y-4 text-sm leading-7 text-slate-100">
+            <p>Team practice: create groups for classmates, club members, or batchmates.</p>
+            <p>Challenge flow: solve coding tasks in an organized, repeatable process.</p>
+            <p>Placement value: demonstrate problem-solving, ownership, and progress over time.</p>
           </div>
+        </section>
 
-          {/* Error Message */}
-          {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-700 text-sm font-medium">{error}</p>
+        <section className="w-full max-w-md justify-self-center">
+          <div className="rounded-[2rem] bg-white p-8 shadow-2xl md:p-10">
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-500">Create Account</p>
+              <h2 className="mt-3 text-4xl font-black text-slate-900">Join DevDojo</h2>
+              <p className="mt-3 text-sm text-slate-500">Start building your coding profile with your team.</p>
             </div>
-          )}
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div>
+            {error && (
+              <div className="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
+                <p className="text-sm font-medium text-red-700">{error}</p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
               <Input
                 id="username"
                 type="text"
@@ -111,9 +123,7 @@ export default function Register() {
                 }}
                 error={usernameError}
               />
-            </div>
 
-            <div>
               <Input
                 id="email"
                 type="email"
@@ -125,9 +135,7 @@ export default function Register() {
                 }}
                 error={emailError}
               />
-            </div>
 
-            <div>
               <Input
                 id="password"
                 type="password"
@@ -139,9 +147,7 @@ export default function Register() {
                 }}
                 error={passwordError}
               />
-            </div>
 
-            <div>
               <Input
                 id="confirmPassword"
                 type="password"
@@ -153,37 +159,33 @@ export default function Register() {
                 }}
                 error={confirmPasswordError}
               />
+
+              <Button type="submit" disabled={loading} className="mt-6 w-full">
+                {loading ? "Creating Account..." : "Create Account"}
+              </Button>
+            </form>
+
+            <div className="my-6 flex items-center">
+              <div className="flex-1 border-t border-gray-300"></div>
+              <div className="px-3 text-sm text-gray-500">or</div>
+              <div className="flex-1 border-t border-gray-300"></div>
             </div>
 
-            {/* Submit Button */}
-            <Button disabled={loading} className="w-full mt-6">
-              {loading ? "Creating Account..." : "Create Account"}
-            </Button>
-          </form>
-
-          {/* Divider */}
-          <div className="my-6 flex items-center">
-            <div className="flex-1 border-t border-gray-300"></div>
-            <div className="px-3 text-gray-500 text-sm">or</div>
-            <div className="flex-1 border-t border-gray-300"></div>
+            <p className="text-center text-gray-600">
+              Already have an account?{" "}
+              <Link
+                to="/"
+                className="font-semibold text-indigo-600 transition-colors hover:text-indigo-700"
+              >
+                Sign in
+              </Link>
+            </p>
           </div>
 
-          {/* Login Link */}
-          <p className="text-center text-gray-600">
-            Already have an account?{" "}
-            <Link
-              to="/"
-              className="text-indigo-600 hover:text-indigo-700 font-semibold transition-colors"
-            >
-              Sign in
-            </Link>
+          <p className="mt-6 text-center text-sm text-white/70">
+            Copyright 2026 DevDojo. Practice with intent, not randomness.
           </p>
-        </div>
-
-        {/* Footer Text */}
-        <p className="text-center text-white text-sm mt-6 opacity-80">
-          © 2025 Dojo. All rights reserved.
-        </p>
+        </section>
       </div>
     </div>
   );

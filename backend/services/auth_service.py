@@ -2,7 +2,10 @@ from sqlalchemy.orm import Session
 from uuid import uuid4
 from models.user import User, UserCreate, UserUpdate
 from utils.password_utils import hash_password
-from datetime import datetime
+
+def normalize_email(email: str) -> str:
+    return email.strip().lower()
+
 
 def create_user(db: Session, user: UserCreate) -> User:
     user_id = str(uuid4())
@@ -10,7 +13,7 @@ def create_user(db: Session, user: UserCreate) -> User:
     db_user = User(
         id=user_id,
         username=user.username,
-        email=user.email,
+        email=normalize_email(user.email),
         hashed_password=hashed_pw
     )
     db.add(db_user)
@@ -19,7 +22,7 @@ def create_user(db: Session, user: UserCreate) -> User:
     return db_user
 
 def get_user_by_email(db: Session, email: str) -> User | None:
-    return db.query(User).filter(User.email == email).first()
+    return db.query(User).filter(User.email == normalize_email(email)).first()
 
 def get_user_by_id(db: Session, user_id: str) -> User | None:
     return db.query(User).filter(User.id == user_id).first()

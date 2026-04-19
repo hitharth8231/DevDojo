@@ -34,7 +34,7 @@ const api = {
 
   login: (email, password) => {
     const formData = new URLSearchParams();
-    formData.append('username', email);
+    formData.append('username', email.trim().toLowerCase());
     formData.append('password', password);
     return fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
@@ -52,7 +52,7 @@ const api = {
   register: (username, email, password) =>
     api.request('/auth/register', {
       method: 'POST',
-      body: { username, email, password },
+      body: { username: username.trim(), email: email.trim().toLowerCase(), password },
     }),
 
   getMe: () => api.request('/auth/me'),
