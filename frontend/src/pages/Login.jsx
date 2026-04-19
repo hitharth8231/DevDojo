@@ -67,7 +67,7 @@ export default function Login() {
             DevDojo gives developers a better way to practice, ship, and grow together.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 md:text-lg">
-            DevDojo helps students, job seekers, and working developers run focused coding sessions with a clear flow. You create a group, start challenges, submit solutions, and track growth without jumping between random tools.
+            DevDojo helps students, job seekers, and working developers take on focused development work with a clear flow. You create a group, start a development challenge, submit your approach, and track growth without jumping between random tools.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -80,7 +80,7 @@ export default function Login() {
             <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">What You Do</p>
               <p className="mt-3 text-sm leading-7 text-slate-100">
-                You bring people into a dojo, run coding challenges, and give everyone one place to practice with consistency.
+                You bring people into a dojo, run development challenges, and give everyone one place to practice with consistency.
               </p>
             </div>
             <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
@@ -95,9 +95,9 @@ export default function Login() {
             <div className="rounded-[1.75rem] border border-emerald-300/20 bg-emerald-400/10 p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-200">Dojo Flow</p>
               <div className="mt-4 grid gap-3 text-sm leading-7 text-slate-100">
-                <p>You create a group for your circle, cohort, or team.</p>
-                <p>You launch a challenge and everyone works in the same practice space.</p>
-                <p>You review submissions, leaderboard movement, and steady progress over time.</p>
+                <p>You create a group for people who want to grow as developers together.</p>
+                <p>You start a development challenge, and each member works on the same real-world task in their own way.</p>
+                <p>You review submissions, compare approaches, and track progress as everyone becomes a stronger developer over time.</p>
               </div>
             </div>
             <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/30 p-6">

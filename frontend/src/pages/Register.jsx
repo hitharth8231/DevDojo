@@ -88,7 +88,7 @@ export default function Register() {
             Build a coding habit that feels structured, social, and worth coming back to.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200">
-            DevDojo gives developers one place to practice in groups, run focused challenges, and see real progress. Students are part of the audience, but the product also fits job seekers and working professionals who want steady growth.
+            DevDojo gives developers one place to practice in groups, take on focused development challenges, and see real progress. Students are part of the audience, but the product also fits job seekers and working professionals who want steady growth.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -98,7 +98,7 @@ export default function Register() {
             </div>
             <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Practice</p>
-              <p className="mt-3 text-sm leading-7 text-slate-100">Run coding challenges in a space that keeps people active and accountable.</p>
+              <p className="mt-3 text-sm leading-7 text-slate-100">Run development challenges in a space that keeps people active and accountable.</p>
             </div>
             <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Grow</p>
