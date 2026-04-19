@@ -60,53 +60,62 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.22),_transparent_32%),linear-gradient(135deg,#111827_0%,#172554_45%,#0f766e_100%)] px-4 py-10 text-white">
       <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-7xl items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-        <section className="rounded-[2rem] border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur md:p-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Placement Project</p>
+        <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-8 shadow-2xl backdrop-blur md:p-12">
+          <div className="absolute inset-y-0 right-0 hidden w-40 bg-[radial-gradient(circle,_rgba(250,204,21,0.18),_transparent_70%)] lg:block" />
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-amber-300">Development-Focused Practice</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-black leading-tight md:text-6xl">
-            DevDojo turns coding practice into a team-based interview simulator.
+            DevDojo gives developers a better way to practice, ship, and grow together.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 md:text-lg">
-            DevDojo helps students practice real coding challenges in groups, track improvement on leaderboards, and receive structured feedback in one workflow recruiters can understand quickly.
+            DevDojo helps students, job seekers, and working developers run focused coding sessions with a clear flow. You create a group, start challenges, submit solutions, and track growth without jumping between random tools.
           </p>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            <div className="rounded-[1.5rem] bg-white/10 p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Problem</p>
+            <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Who Uses It</p>
               <p className="mt-3 text-sm leading-7 text-slate-100">
-                Placement preparation is usually scattered across sheets, chats, and random coding links with no shared accountability.
+                Students use it for placements, job seekers use it to stay sharp, and working developers use it to keep improving with a team.
               </p>
             </div>
-            <div className="rounded-[1.5rem] bg-white/10 p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Solution</p>
+            <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">What You Do</p>
               <p className="mt-3 text-sm leading-7 text-slate-100">
-                Students create or join dojo groups, solve curated challenges, compare progress, and learn in a social practice loop.
+                You bring people into a dojo, run coding challenges, and give everyone one place to practice with consistency.
               </p>
             </div>
-            <div className="rounded-[1.5rem] bg-white/10 p-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Value</p>
+            <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Why It Matters</p>
               <p className="mt-3 text-sm leading-7 text-slate-100">
-                The project demonstrates product thinking, full-stack engineering, collaboration, and placement-focused execution.
+                DevDojo turns practice into a repeatable habit and makes progress visible instead of vague.
               </p>
             </div>
           </div>
 
-          <div className="mt-8 rounded-[1.75rem] border border-emerald-300/20 bg-emerald-400/10 p-6">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-200">How It Works</p>
-            <div className="mt-4 grid gap-3 text-sm leading-7 text-slate-100">
-              <p>1. Sign in and create a dojo group for your class, team, or interview-prep circle.</p>
-              <p>2. Launch coding challenges and let members submit solutions in a shared environment.</p>
-              <p>3. Review leaderboard movement, feedback, and participation to understand consistent performers.</p>
+          <div className="mt-8 grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
+            <div className="rounded-[1.75rem] border border-emerald-300/20 bg-emerald-400/10 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-emerald-200">Dojo Flow</p>
+              <div className="mt-4 grid gap-3 text-sm leading-7 text-slate-100">
+                <p>You create a group for your circle, cohort, or team.</p>
+                <p>You launch a challenge and everyone works in the same practice space.</p>
+                <p>You review submissions, leaderboard movement, and steady progress over time.</p>
+              </div>
+            </div>
+            <div className="rounded-[1.75rem] border border-white/10 bg-slate-950/30 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-300">Built For Growth</p>
+              <p className="mt-4 text-sm leading-7 text-slate-100">
+                DevDojo focuses on the development journey itself. It helps people practice with intention, not just solve one question and disappear.
+              </p>
             </div>
           </div>
         </section>
 
         <section className="w-full max-w-md justify-self-center">
-          <div className="rounded-[2rem] bg-white p-8 text-slate-900 shadow-2xl md:p-10">
+          <div className="rounded-[2rem] border border-slate-200/60 bg-white p-8 text-slate-900 shadow-2xl md:p-10">
             <div className="mb-8 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-500">Welcome Back</p>
               <h2 className="mt-3 text-4xl font-black text-slate-900">Sign in to DevDojo</h2>
               <p className="mt-3 text-sm leading-6 text-slate-500">
-                Access your placement-prep dashboard, coding groups, and challenge history.
+                Pick up your coding routine, rejoin your dojo, and keep moving forward.
               </p>
             </div>
 
@@ -168,7 +177,7 @@ export default function Login() {
           </div>
 
           <p className="mt-6 text-center text-sm text-white/70">
-            Copyright 2026 DevDojo. Built to demonstrate product clarity, collaboration, and interview readiness.
+            Copyright 2026 DevDojo. Designed for developers who grow faster when practice feels real.
           </p>
         </section>
       </div>

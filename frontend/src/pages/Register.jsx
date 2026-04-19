@@ -81,19 +81,29 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.22),_transparent_32%),linear-gradient(135deg,#111827_0%,#172554_45%,#0f766e_100%)] px-4 py-10">
       <div className="mx-auto grid min-h-[calc(100vh-5rem)] max-w-6xl items-center gap-8 lg:grid-cols-[1fr_0.9fr]">
-        <section className="rounded-[2rem] border border-white/10 bg-white/10 p-8 text-white shadow-2xl backdrop-blur md:p-12">
+        <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-8 text-white shadow-2xl backdrop-blur md:p-12">
+          <div className="absolute -left-10 top-10 h-28 w-28 rounded-full bg-amber-300/10 blur-3xl" />
           <p className="text-sm font-semibold uppercase tracking-[0.28em] text-amber-300">Why DevDojo</p>
           <h1 className="mt-4 text-4xl font-black leading-tight md:text-5xl">
-            Build a coding practice environment that feels closer to real placements.
+            Build a coding habit that feels structured, social, and worth coming back to.
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200">
-            DevDojo is a collaborative interview-prep workspace where students solve challenges together, monitor consistency, and present measurable growth.
+            DevDojo gives developers one place to practice in groups, run focused challenges, and see real progress. Students are part of the audience, but the product also fits job seekers and working professionals who want steady growth.
           </p>
 
-          <div className="mt-8 space-y-4 text-sm leading-7 text-slate-100">
-            <p>Team practice: create groups for classmates, club members, or batchmates.</p>
-            <p>Challenge flow: solve coding tasks in an organized, repeatable process.</p>
-            <p>Placement value: demonstrate problem-solving, ownership, and progress over time.</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Start</p>
+              <p className="mt-3 text-sm leading-7 text-slate-100">Create a group for classmates, peers, or coworkers who want a better practice loop.</p>
+            </div>
+            <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Practice</p>
+              <p className="mt-3 text-sm leading-7 text-slate-100">Run coding challenges in a space that keeps people active and accountable.</p>
+            </div>
+            <div className="rounded-[1.5rem] bg-white/10 p-5 ring-1 ring-white/5">
+              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-amber-200">Grow</p>
+              <p className="mt-3 text-sm leading-7 text-slate-100">Track consistency, compare progress, and keep your development momentum alive.</p>
+            </div>
           </div>
         </section>
 
@@ -102,7 +112,7 @@ export default function Register() {
             <div className="mb-8 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-indigo-500">Create Account</p>
               <h2 className="mt-3 text-4xl font-black text-slate-900">Join DevDojo</h2>
-              <p className="mt-3 text-sm text-slate-500">Start building your coding profile with your team.</p>
+              <p className="mt-3 text-sm text-slate-500">Start building your coding rhythm with people who want to improve.</p>
             </div>
 
             {error && (
@@ -183,7 +193,7 @@ export default function Register() {
           </div>
 
           <p className="mt-6 text-center text-sm text-white/70">
-            Copyright 2026 DevDojo. Practice with intent, not randomness.
+            Copyright 2026 DevDojo. Practice with people who make you better.
           </p>
         </section>
       </div>

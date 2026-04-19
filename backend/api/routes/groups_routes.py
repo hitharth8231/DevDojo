@@ -22,7 +22,12 @@ async def create_group_route(
     current_user=Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    db_group = create_group(db, group, current_user["username"])
+    db_group = create_group(
+        db,
+        group,
+        current_user["username"],
+        current_user["id"],
+    )
     return GroupOut(
         id=db_group.id,
         name=db_group.name,

@@ -3,14 +3,20 @@ from uuid import uuid4
 from models.group import Group, GroupCreate
 import json
 
-def create_group(db: Session, group_data: GroupCreate, created_by: str) -> Group:
+
+def create_group(
+    db: Session,
+    group_data: GroupCreate,
+    created_by: str,
+    creator_member_id: str,
+) -> Group:
     group_id = str(uuid4())
     db_group = Group(
         id=group_id,
         name=group_data.name,
         description=group_data.description,
         created_by=created_by,
-        members=json.dumps([created_by])
+        members=json.dumps([creator_member_id])
     )
     db.add(db_group)
     db.commit()
