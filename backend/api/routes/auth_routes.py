@@ -49,3 +49,38 @@ async def delete_me(current_user: dict = Depends(get_current_user), db: Session 
     success = delete_user_by_id(db, current_user["id"])
     if not success:
         raise HTTPException(status_code=404, detail="User not found")
+
+@router.post("/refresh")
+async def refresh_token(refresh_token: str, db: Session = Depends(get_db)):
+    """
+    Takes a refresh_token and returns a new access_token
+    Allows users to stay logged in without re-entering credentials
+    """
+    from core.security import decode_token
+    from services.auth_service import get_user_by_id
+    
+    # Decode the refresh token
+    token_data = decode_token(refresh_token)
+    if not token_data or not token_data.user_id:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid refresh token"
+        )
+    
+    # Verify user still exists in database
+    user = get_user_by_id(db, token_data.user_id)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="User not found"
+        )
+    
+    # Create and return new access token
+    new_access_token = create_access_token(
+        user_id=user.id,
+        email=user.email
+    )
+    return {
+        "access_token": new_access_token,
+        "token_type": "bearer"
+    }

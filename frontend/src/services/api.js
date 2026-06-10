@@ -2,7 +2,7 @@ const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://127.0.0.1:8000';
 
 const api = {
   async request(endpoint, { body, method = 'GET', ...customConfig } = {}) {
-    const token = localStorage.getItem('dojo_token');
+    let token = localStorage.getItem('dojo_token');
     const headers = { 'Content-Type': 'application/json' };
 
     if (token) {
@@ -20,7 +20,49 @@ const api = {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+      let response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+      
+      // Handle expired token - try to refresh
+      if (response.status === 401) {
+        const refreshToken = localStorage.getItem('refresh_token');
+        
+        if (refreshToken && endpoint !== '/auth/refresh') {
+          try {
+            // Attempt to refresh the access token
+            const refreshResponse = await fetch(`${API_BASE_URL}/auth/refresh`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ refresh_token: refreshToken })
+            });
+            
+            if (refreshResponse.ok) {
+              const refreshData = await refreshResponse.json();
+              // Store the new access token
+              localStorage.setItem('dojo_token', refreshData.access_token);
+              
+              // Retry the original request with the new token
+              token = refreshData.access_token;
+              headers.Authorization = `Bearer ${token}`;
+              config.headers = { ...headers, ...customConfig.headers };
+              response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+            } else {
+              // Refresh failed - user needs to login again
+              this.logout();
+              return;
+            }
+          } catch (err) {
+            console.error('Token refresh failed:', err);
+            // Logout on refresh failure
+            this.logout();
+            return;
+          }
+        } else {
+          // No refresh token or already at refresh endpoint - logout
+          this.logout();
+          return;
+        }
+      }
+      
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.detail || 'Something went wrong');
@@ -62,6 +104,12 @@ const api = {
       method: 'PUT',
       body: { github_username },
     }),
+
+  logout: () => {
+    localStorage.removeItem('dojo_token');
+    localStorage.removeItem('refresh_token');
+    window.location.href = '/';
+  },
 
   getGroups: () => api.request('/groups/'),
 

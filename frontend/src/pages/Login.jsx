@@ -49,6 +49,7 @@ export default function Login() {
     try {
       const data = await api.login(email, password);
       localStorage.setItem("dojo_token", data.access_token);
+      localStorage.setItem("refresh_token", data.refresh_token);
       navigate("/dashboard");
     } catch (err) {
       setError(err.message || "Login failed. Please try again.");

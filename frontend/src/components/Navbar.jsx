@@ -1,5 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import api from "../services/api";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -7,8 +8,7 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("dojo_token");
-    navigate("/");
+    api.logout();
   };
 
   if (location.pathname === "/" || location.pathname === "/register") {
